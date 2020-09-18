@@ -3,32 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class playerctrl : MonoBehaviour
-{
-	    Transform trans;                                                         //-----b.
-    Rigidbody rigid;                                                      //-----c.
-    // Use this for initialization
-    void Start () {                                                               //-----d.
-        trans = GetComponent<Transform>();                   //-----e.
-        rigid = GetComponent<Rigidbody>();                //-----
+{                                                    
+	public float mousesensitvex = 5;
+	public float mousesensitvey = 5;
+	public float playerspeed = 5;
+	//def mousesensitve
+	private float lookuplimit = 90;
+	private float lookdownlimit = 90;
+	private float lookleftlimit = -360;
+	private float lookrightlimit = 360;
+	//def rotate limit
+	private Vector3 camrotate = new Vector3(0,0,0);
+	//set cam aim point;
+	private bool playergrounded;
 	
-}
+	
+	private void start()
+	{
+		controller = gameObject.AddComponent<CharacterController>();
+	}
+	
+	private bool UpdateMovement() 
+	 {
+        float distance = playerspeed * Time.deltaTime;   // 移動距離
+        playergrounded = controller.isGrounded;
+		if (playergrounded &&　)
+		{	
+			if (Input.GetKey(KeyCode.W)) 
+			{
+				controller.move()
+            
+			}
 
+        
+			if (Input.GetKey(KeyCode.S)) 
+			{
+            
+            
+			}
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.A)) {                  //-----h.
-            trans.Translate(Vector3.left * Time.deltaTime);   //-----i.
-        }else if (Input.GetKey(KeyCode.D)) {       //-----j.
-            trans.Translate(Vector3.right * Time.deltaTime); //-----k.
-        }else if (Input.GetKey(KeyCode.W)) {
-			trans.Translate(Vector3.forward * Time.deltaTime);
-		}else if (Input.GetKey(KeyCode.S)) {
-			trans.Translate(Vector3.down * Time.deltaTime);
+        
+			if (Input.GetKey(KeyCode.A)) 
+			{
+				
+			}
+			
+			if (Input.GetKey(KeyCode.D)) 
+			{
+				
+			}
 		}
-
-        if (Input.GetKeyDown(KeyCode.Backspace)) {          
-            rigid.AddForce(Vector3.up * 200);
-		}
+        
     }
 }
