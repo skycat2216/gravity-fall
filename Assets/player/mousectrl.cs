@@ -19,17 +19,19 @@ public class mousectrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X")*mouseSensitve*Time.deltaTime;
+        transform.localRotation = Quaternion.Euler(270f,0f,90f);
+	
+		float mouseX = Input.GetAxis("Mouse X")*mouseSensitve*Time.deltaTime;
 		float mouseY = Input.GetAxis("Mouse Y")*mouseSensitve*Time.deltaTime;
 		
 		Xrotation = mouseX;
-		Xrotation = Mathf.Clamp(Xrotation,-90f,90f);
+		Xrotation = Mathf.Clamp(Xrotation,180f,360f);
 		Yrotation = mouseY;
 		Yrotation = Mathf.Clamp(Yrotation,-180f,180f);
 		
-		transform.localRotation = Quaternion.Euler(Xrotation,0f,0f);
+		transform.localRotation = Quaternion.Euler(Xrotation,0f,90f);
 		playerBody.Rotate(Vector3.up*mouseX);
-		transform.localRotation = Quaternion.Euler(0f,Yrotation,0f);
+		transform.localRotation = Quaternion.Euler(0f,Yrotation,90f);
 		playerBody.Rotate(Vector3.right*mouseY);
     }
 }
