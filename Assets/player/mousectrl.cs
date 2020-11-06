@@ -23,11 +23,13 @@ public class mousectrl : MonoBehaviour
 		float mouseX = Input.GetAxis("Mouse X")*mouseSensitve*Time.deltaTime;
 		float mouseY = Input.GetAxis("Mouse Y")*mouseSensitve*Time.deltaTime;
 		
-		Xrotation = -mouseY;
+		Xrotation -= mouseY;
+		
 		Xrotation = Mathf.Clamp(Xrotation,-90f,90f);
 		
 		transform.localRotation = Quaternion.Euler(Xrotation,0f,0f);
 		playerBody.Rotate(Vector3.up*mouseX);
+		
 		
     }
 }
