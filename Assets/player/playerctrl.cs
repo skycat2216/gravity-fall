@@ -11,15 +11,21 @@ public class playerctrl : MonoBehaviour
 	public float playerspeed = 10f;	 
 	public float height = 1.0f;
 	public float gravityvalue = -20f;
-	
-	
-	public Transform wallcheckleft;
-	public Transform wallcheckright;
+
+
+    public Transform wallcheckL;
+	public Transform wallcheckR;
 	public float walldistance = 0.4f;
 	public LayerMask wallmask;
 	private bool wallrunleftcheck,wallrunrightcheck;
-	
-	 void Start()
+
+	public Transform groundcheck;
+	public float grounddistance = 0.4f;
+	public LayerMask groundmask;
+	private bool groundchecking;
+
+
+	void Start()
     {
         ctrl = GetComponent<CharacterController>();
 
@@ -28,8 +34,8 @@ public class playerctrl : MonoBehaviour
 	
 	void Update()
 	{
-		playergrounded = ctrl.isGrounded;
-		
+		playergrounded = Physics.CheckSphere(groundcheck.position, grounddistance, groundmask);
+
 		if (playervelocity.y < 0 && playergrounded == true)
 		{
 			playervelocity.y=-2f;
@@ -54,11 +60,15 @@ public class playerctrl : MonoBehaviour
 			playervelocity.y = Mathf.Sqrt(height * -2f * gravityvalue);
 		}
         
-        wallrunleftcheck = Physics.CheckSphere(wallcheckleft.position, walldistance, wallmask);
-		
-		if (wallrunleftcheck == true || wallcheckright == true && playervelocity.y <0)
+        wallrunleftcheck = Physics.CheckSphere(wallcheckL.position, walldistance, wallmask);
+		wallrunrightcheck = Physics.CheckSphere(wallcheckR.position, walldistance, wallmask);
+		if (wallcheckL == true || wallcheckR == true)
 		{
-			playervelocity.y = 0;
+			if (playergrounded != true)
+			{
+				playervelocity.y = 0;
+			}
 		}
+
 	}
 }
