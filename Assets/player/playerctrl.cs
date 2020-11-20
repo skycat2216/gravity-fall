@@ -8,16 +8,11 @@ public class playerctrl : MonoBehaviour
 	public CharacterController ctrl;
 	private Vector3 playervelocity;
 	private bool playergrounded;
-	public float playerspeed = 10f;	 
+	public float playerspeed = 10f;	
+	public float runspeed = 15f;
 	public float height = 1.0f;
 	public float gravityvalue = -20f;
 
-
-    public Transform wallcheckL;
-	public Transform wallcheckR;
-	public float walldistance = 0.4f;
-	public LayerMask wallmask;
-	private bool wallrunleftcheck,wallrunrightcheck;
 
 	public Transform groundcheck;
 	public float grounddistance = 0.4f;
@@ -33,9 +28,10 @@ public class playerctrl : MonoBehaviour
 	
 	
 	void Update()
-	{
+	{	
 		playergrounded = Physics.CheckSphere(groundcheck.position, grounddistance, groundmask);
-
+		
+		
 		if (playervelocity.y < 0 && playergrounded == true)
 		{
 			playervelocity.y=-2f;
@@ -60,15 +56,9 @@ public class playerctrl : MonoBehaviour
 			playervelocity.y = Mathf.Sqrt(height * -2f * gravityvalue);
 		}
         
-        wallrunleftcheck = Physics.CheckSphere(wallcheckL.position, walldistance, wallmask);
-		wallrunrightcheck = Physics.CheckSphere(wallcheckR.position, walldistance, wallmask);
-		if (wallcheckL == true || wallcheckR == true)
-		{
-			if (playergrounded != true)
-			{
-				playervelocity.y = 0;
-			}
-		}
+       //-----------------------------------------------------------------------------------
+	   
+	   
 
 	}
 }
