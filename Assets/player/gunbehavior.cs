@@ -10,16 +10,12 @@ public class gunbehavior : MonoBehaviour
     public Camera mainCam;
  	
 	public float gunrecoil = 50f;
-	public float firerate = 1f;
-	public float weaponRange = 50f;  
-	public Transform muzzle;
-	public GameObject copyGameObject;
-    public GameObject superGameObject;
+	public float weaponRange = 50f;
+	public static bool triggered = false; 
 
-    private GameObject childGameObject;
 	
-	private LineRenderer laserLine;    
-	private float nextFire;  
+    public float firerate = 0.1f;
+	private float nextFire=0;  
 	
 	// Start is called before the first frame update
     void Start()
@@ -30,13 +26,15 @@ public class gunbehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {	
-		if(Input.GetKeyDown(KeyCode.Mouse0))
+		if(Input.GetKeyDown(KeyCode.Mouse0)&&Time.time >= nextFire+firerate)
 		{
-			childGameObject = Instantiate(copyGameObject);
-			 
-            childGameObject.transform.parent = superGameObject.transform;
-			
-            childGameObject.transform.localPosition = muzzle.transform.position;
+			nextFire = Time.time;
+			triggered = true;
+		}
+		if(Input.GetKeyUp(KeyCode.Mouse0))
+		{
+			nextFire = 0;
+			triggered = false;
 		}
 		
         if(Input.GetKeyDown(KeyCode.Mouse1))
