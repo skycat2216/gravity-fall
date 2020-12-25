@@ -14,7 +14,7 @@ public class gunbehavior : MonoBehaviour
 	public static bool triggered = false; 
 
 	
-    public float firerate = 0.1f;
+    public float firerate = 0.5f;
 	private float nextFire=0;  
 	
 	// Start is called before the first frame update
@@ -26,7 +26,7 @@ public class gunbehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {	
-		if(Input.GetKeyDown(KeyCode.Mouse0)&&Time.time >= nextFire+firerate)
+		if(Input.GetKeyDown(KeyCode.Mouse0))
 		{
 			nextFire = Time.time;
 			triggered = true;

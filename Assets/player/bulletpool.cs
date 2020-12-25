@@ -6,7 +6,7 @@ public class bulletpool : MonoBehaviour
 {
     public int count=30;
 	public GameObject bulletPrefab;
-	private List<GameObject> bulletList = new List<GameObject>();
+	private Queue<GameObject> bulletmag = new Queue<GameObject>();
 	
 	
 	// Start is called before the first frame update
@@ -23,18 +23,19 @@ public class bulletpool : MonoBehaviour
 			Createbullet();
 		}
     }
-	private GameObject Createbullet()
+	private void Createbullet()
 	{
 		GameObject bullet = Instantiate(bulletPrefab) as GameObject;
-		bulletList.Add(bullet);
-		bullet.transform.SetParent(transform);
-		bullet.SetActvity(false);
+		bullet.SetActive(false);
+		bulletmag.Enqueue(bullet);
+		Debug.Log("spawned");
+		
 	}
 	public void ReUse(Vector3 position,Quaternion rotation)
 	{
-		if(bulletList.Count>0)
+		if(bulletmag.Count>0)
 		{
-			GameObject reuse = m_pool.Dequeue();
+			GameObject reuse = bulletmag.Dequeue();
             reuse.transform.position = position;
             reuse.transform.rotation = rotation;
             reuse.SetActive( true );
@@ -43,6 +44,11 @@ public class bulletpool : MonoBehaviour
 		{
 			Createbullet();
 		}
+	}
+	public void Recycle(GameObject recycle)
+	{
+		bulletmag.Enqueue(recycle);
+		recycle.SetActive(false);
 	}
 	
 }
