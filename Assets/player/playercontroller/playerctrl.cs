@@ -29,7 +29,8 @@ public class playerctrl : MonoBehaviour
 	
 	void Update()
 	{	
-		playergrounded = Physics.CheckSphere(groundcheck.position, grounddistance, groundmask);
+		playergrounded = Physics.CheckSphere
+			(groundcheck.position, grounddistance, groundmask);
 		
 		
 		if (playervelocity.y < 0 && playergrounded == true)

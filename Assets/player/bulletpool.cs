@@ -28,7 +28,6 @@ public class bulletpool : MonoBehaviour
 		GameObject bullet = Instantiate(bulletPrefab) as GameObject;
 		bullet.SetActive(false);
 		bulletmag.Enqueue(bullet);
-		Debug.Log("spawned");
 		
 	}
 	public void ReUse(Vector3 position,Quaternion rotation)

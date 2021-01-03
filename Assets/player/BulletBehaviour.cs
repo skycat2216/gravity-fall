@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
 {
-    public bulletpool pool;
-
-    public float Firerate = 0.5f;
-    private float NextFire=0;
+	public bulletpool pool;
 	
 	private Transform _myTransform;
 	
@@ -19,10 +16,9 @@ public class BulletBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if(gunbehavior.triggered==true&&Time.time > NextFire + Firerate)
+         if(gunbehavior.triggered==true)
 		{
 			pool.ReUse(_myTransform.position,_myTransform.rotation);
-			
 		}
     }
 }
