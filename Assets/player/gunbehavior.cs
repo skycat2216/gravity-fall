@@ -29,14 +29,7 @@ public class gunbehavior : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.Mouse0) && nextFire + Time.deltaTime >= firerate)
 		{
 			triggered = true;
-			if(triggered == true)
-			{
-				Debug.Log("test");
-			}
-			else
-            {
-				Debug.Log("nope");
-            }
+			
 			nextFire = 0f;
 		}
 		if(Input.GetKeyUp(KeyCode.Mouse0))

@@ -7,10 +7,6 @@ public class mousectrl : MonoBehaviour
 	public Transform playerBody;
 	public float mouseSensitve = 100f;
 	
-	
-	
-	
-	
 
 	float Xrotation=0f;
     // Start is called before the first frame update
@@ -20,7 +16,7 @@ public class mousectrl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+	void 
     {
 		//mousemovement
 		

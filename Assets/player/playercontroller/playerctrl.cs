@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class playerctrl : MonoBehaviour
+public class playerctrl : iTickable
 {    
 	
 	public CharacterController ctrl;
@@ -20,14 +18,9 @@ public class playerctrl : MonoBehaviour
 	private bool groundchecking;
 
 
-	void Start()
-    {
-        ctrl = GetComponent<CharacterController>();
 
-    }
 	
-	
-	void Update()
+	public void Tick()
 	{	
 		playergrounded = Physics.CheckSphere
 			(groundcheck.position, grounddistance, groundmask);
