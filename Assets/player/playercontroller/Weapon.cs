@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
 public interface Weapon {
-    void Cooldown( float time );
+    Transform muzzle();
     void Fire( Vector3 position, Vector3 direction );
+    void Cooldown( float time );
 	void reload();
 }

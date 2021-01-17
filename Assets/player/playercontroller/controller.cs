@@ -5,8 +5,10 @@ namespace zenject.nonmonobehaviour
 {
 public class controller : ITickable
 {
+
     private readonly playerctrl Player;
 	private readonly Armony armony;
+	private Transform muzzle;
 	
 	public controller(playerctrl Player, Armony armony)
 	{
@@ -15,18 +17,18 @@ public class controller : ITickable
 	}
 	public void Tick()
 	{
-		Player.move(new Vector3(Input.GetAxis("Horizontal"),
-								Input.GetAxis("Jump"),
-								Input.GetAxis("Vertical")));
+		Player.move();
 								
-		Player.spincam(new Vector3);					
+		Player.spincam(Input.GetAxis("Mouse X"),
+					   Input.GetAxis("Mouse Y"));					
 		
 		armony.Cooldown(Time.deltaTime);
 		
 		if(Input.GetButton("Fire1"))
 		{
-			Transform muzzle = Player.Getmuzzle;
-			armony.FireCurrentWeapon(muzzle.position,muzzle.forward);
+			muzzle = armony.Getmuzzle();
+			armony.FireCurrentWeapon(muzzle.position,
+									 muzzle.forward);
 		}
 		
 		 if ( Input.GetButtonDown( "LeftArrow" ) ) 
