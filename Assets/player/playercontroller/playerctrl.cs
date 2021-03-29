@@ -2,9 +2,6 @@
 
 public class playerctrl : MonoBehaviour
 {    
-	[SerializeField]
-    private Transform muzzle;
-    [SerializeField]
 
 	private Vector3 Velocity;
 	private bool playergrounded;
@@ -49,8 +46,7 @@ public class playerctrl : MonoBehaviour
 		Velocity.x = moveX*playerspeed;
 
 		Velocity.z = moveZ*playerspeed;
-
-		
+	
 	}
 								
 	public void spincam(float mouseX,float mouseY)
