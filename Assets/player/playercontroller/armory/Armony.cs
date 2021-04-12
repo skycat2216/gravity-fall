@@ -42,7 +42,7 @@ public class Armony {
 
     public void SwitchLeft() {
         --currentIndex;
-        if ( currentIndex == -1 ) 
+        if ( currentIndex == -1) 
 		{
             currentIndex = weapons.Count - 1;
 			//animation:trigger(swapping);

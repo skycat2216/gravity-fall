@@ -3,13 +3,13 @@ using Zenject;
 
 namespace zenject.nonmonobehaviour
 {
-public class bulletpool : ITickable
+public class Foo
 {
-    public int count=30;
-	public GameObject bulletPrefab;
-	private Queue<GameObject> bulletmag = new Queue<GameObject>();
-	
-	
+	public class Factory : MemoryPool<Foo>
+	{
+		
+	}
+
 	// Start is called before the first frame update
     
 	
