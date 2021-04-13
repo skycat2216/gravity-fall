@@ -5,12 +5,12 @@ using UnityEngine;
 public class rifle : Weapon
 {
     // Start is called before the first frame update
-    private readonly Foo.Factory rifleBulletPool;
-    private readonly List<Foo> _Foos = new List<Foo>();
+    private readonly ThePool.Pool rifleBulletPool;
+    private readonly List<ThePool> _Pool = new List<ThePool>();
     private float cooldownTime;
     private float mag;
 
-    public void Rifle( Foo.Factory rifleBulletPool ) {
+    public void Rifle( ThePool.Pool rifleBulletPool ) {
         this.bulletPool = bulletPool;
     }
 
