@@ -21,6 +21,7 @@ public class playerctrl : MonoBehaviour
 
 //------------------------------------------------------------------------------------------------
 
+	 Cursor.lockState = CursorLockMode.Locked;
 
     public void move()
 	{

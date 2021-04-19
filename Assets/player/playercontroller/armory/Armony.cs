@@ -10,20 +10,14 @@ public class Armony {
         this.weapons = weapons;
     }
 
-    public Transform Getmuzzle()
-    {
-        Transform Muzzle = weapons[currentIndex].muzzle();
-        return Muzzle;
-    }
-
     public void Cooldown( float time ) 
 	{
         weapons[currentIndex].Cooldown( time );
     }
 
-    public void FireCurrentWeapon( Vector3 position, Vector3 direction ) 
+    public void FireCurrentWeapon() 
 	{
-        weapons[currentIndex].Fire( position, direction );
+        weapons[currentIndex].Fire();
     }
 	
 	public void ReloadWeapon()

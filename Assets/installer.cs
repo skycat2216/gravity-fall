@@ -8,8 +8,8 @@ public class GameInstaller : MonoInstaller<GameInstaller> {
     private Bullet bulletPrefab;
 
     public override void InstallBindings() {
-        Container.BindInterfacesAndSelfTo<Game>().AsSingle();
-        Container.Bind<Hero>().FromComponentInNewPrefab( heroPrefab ).AsSingle();
+        Container.BindInterfacesAndSelfTo<controller>().AsSingle();
+        Container.Bind<playerctrl>().FromComponentInNewPrefab( playerPrefab ).AsSingle();
         Container.Bind<Armony>().AsSingle();
 
         Container.Bind<Weapon>().To<rifle>().AsSingle();
@@ -18,7 +18,7 @@ public class GameInstaller : MonoInstaller<GameInstaller> {
         Container.Bind<Weapon>().To<M2605>().AsSingle();
         Container.Bind<Weapon>().To<P3A1>().AsSingle();
 
-        Container.Bind<BulletPool>().AsSingle();
+        Container.Bind<ThePool>().AsSingle();
         Container.Bind<Bullet>().FromInstance( bulletPrefab ).AsSingle();
     }
 }

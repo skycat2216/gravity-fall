@@ -3,7 +3,9 @@
 public interface Weapon 
 {
     
-    void Fire( Vector3 position, Vector3 direction );
+    void Fire();
     void Cooldown( float time );
 	void reload();
+
+
 }

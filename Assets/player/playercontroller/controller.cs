@@ -26,9 +26,8 @@ public class controller : ITickable
 		
 		if(Input.GetButton("Fire1"))
 		{
-			muzzle = armony.Getmuzzle();
-			armony.FireCurrentWeapon(muzzle.position,
-									 muzzle.forward);
+			
+			armony.FireCurrentWeapon();
 		}
 		
 		 if ( Input.GetButtonDown( "LeftArrow" ) ) 

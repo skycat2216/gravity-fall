@@ -7,23 +7,24 @@ public class rifle : Weapon
     // Start is called before the first frame update
     private readonly ThePool.Pool rifleBulletPool;
     private readonly List<ThePool> _Pool = new List<ThePool>();
-    private float cooldownTime;
+    private float cooldownTime = 0.1f;
     private float mag;
-
-    public void Rifle( ThePool.Pool rifleBulletPool ) {
-        this.bulletPool = bulletPool;
+    private int magSize = 5;
+    public void Rifle() 
+    {
+       
     }
 
-    public void Cooldown( float time ) {
+    public void Cooldown( float time ) 
+    {
         cooldownTime -= time;
     }
 
-    public void Fire( Vector3 position, Vector3 direction ) {
+    public void Fire() 
+    {
         if ( cooldownTime <= 0f &&　mag>0) 
         {
-            Bullet bullet = bulletPool.Spawn();
-            bullet.SetPosition( position );
-            bullet.SetVelocity( direction * 10f );
+            
 
             cooldownTime = 0.1f;
             mag = mag - 1;
@@ -36,7 +37,7 @@ public class rifle : Weapon
 
     public void reload()
     {
-        
+        mag = magSize;
     }
 
 
