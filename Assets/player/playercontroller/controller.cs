@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace zenject.nonmonobehaviour
-{
+
 public class controller : ITickable
 {
 
-    private readonly playerctrl Player;
-	private readonly Armony armony;
+    private readonly playerctrl Player; //readonly
+	private readonly Armony armony; //readonly
 	private Transform muzzle;
 	
 	public controller(playerctrl Player, Armony armony)
 	{
+		Cursor.lockState = CursorLockMode.Locked;
 		this.Player = Player;
 		this.armony = armony;
+		
 	}
 	public void Tick()
 	{
@@ -41,5 +42,4 @@ public class controller : ITickable
 		}
 	}
     
-}
 }

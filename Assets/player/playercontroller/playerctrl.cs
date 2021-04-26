@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Zenject;
 
 public class playerctrl : MonoBehaviour
 {    
@@ -21,7 +22,7 @@ public class playerctrl : MonoBehaviour
 
 //------------------------------------------------------------------------------------------------
 
-	 Cursor.lockState = CursorLockMode.Locked;
+	
 
     public void move()
 	{
