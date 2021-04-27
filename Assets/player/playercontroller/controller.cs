@@ -7,8 +7,7 @@ public class controller : ITickable
 
     private readonly playerctrl Player; //readonly
 	private readonly Armony armony; //readonly
-	private Transform muzzle;
-	
+
 	public controller(playerctrl Player, Armony armony)
 	{
 		Cursor.lockState = CursorLockMode.Locked;
